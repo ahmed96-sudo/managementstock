@@ -1,0 +1,146 @@
+.contain {
+    height: 100%;
+    width: 100%;
+    background-color: #EFF2F6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.factur_all {
+    height: 500px;
+    width: 400px;
+    border: 1px solid #888;
+    background-color: white;
+}
+.info_company {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nameofcompany {
+    margin-left: 20px;
+}
+.nameofcompany p {
+    padding-bottom: 2px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: arial;
+}
+.parainfo {
+    display: flex;
+    justify-content: space-between;
+}
+.photodate {
+    margin-right: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.photodate img {
+    height: 90px;
+    width: 100px;
+    background-color: #8E5656;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.photodate p {
+    font-weight: bold;
+    font-family: arial;
+    font-size: 15px;
+}
+.factur_number {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.factur_number p {
+    padding: 3px;
+    font-weight: bold;
+    font-family: arial;
+    font-size: 15px;
+}
+.name_of_client {
+    height: 40px;
+    width: 100%;
+}
+.name_of_client p {
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: arial;
+}
+.signature {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.signature p {
+    margin-right: 50px;
+    color: #777;
+    text-transform: capitalize;
+}
+.factur_all hr {
+    width: 100%;
+}
+.addresse {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.addresse p:first-child {
+    width: 300px;
+    text-align: center;
+    overflow: auto;
+}
+.table_factur {
+    height: 170px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table_factur table {
+    font-family: arial;
+    border-spacing: 0;
+    height: 100%;
+    width: 93%;
+}
+.table_factur table thead tr {
+    display: block;
+}
+.table_factur table thead tr th {
+    width: 140px;
+    border: 1px solid #ddd;
+    padding: 2px;
+    color: black;
+    overflow: auto;
+}
+.table_factur table tbody {
+    display: block;
+    height: 184px;
+    overflow: auto;
+    width: 100%;
+}
+.table_factur table tbody tr td {
+    border: 1px solid #ddd;
+    padding: 3px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    overflow-x: auto;
+    width: 56px;
+    max-width: 56px;
+}

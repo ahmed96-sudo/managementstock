@@ -32,6 +32,7 @@ class Dashbord extends Component {
             total_ht_vente : 0,
             total_ttc_vente : 0,
             avoire_list : [],
+            index_of_edit_avoire : 0,
             avoire_regelement : {},
             avoire_client_id : 0,
             total_remise_avoire : 0,
@@ -78,7 +79,7 @@ class Dashbord extends Component {
         this.selectfourn();
         this.selectfactur();
 
-        fetch("https://managementstock.herokuapp.com/notifi",{
+        fetch("http://managementstock.herokuapp.com/notifi",{
 
             method: "GET",
 
@@ -118,7 +119,7 @@ class Dashbord extends Component {
 
         });
 
-        fetch("https://managementstock.herokuapp.com/admin",{
+        fetch("http://managementstock.herokuapp.com/admin",{
 
             method: "GET",
 
@@ -308,7 +309,7 @@ class Dashbord extends Component {
 
         comptab_menu.style.display = 'none';
 
-        fetch("https://managementstock.herokuapp.com/moneycompany",{
+        fetch("http://managementstock.herokuapp.com/moneycompany",{
 
             method: "GET",
 
@@ -1274,6 +1275,46 @@ class Dashbord extends Component {
 
     handleClick8 = () => {
 
+        fetch("http://managementstock.herokuapp.com/settingsinfo",{
+
+            method: "GET",
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            }
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            document.getElementById("nom_settings_tab_id").value = data.all_info.nom_ste_company;
+            document.getElementById("patente_settings_tab_id").value = data.all_info.patente_company;
+            document.getElementById("rc_settings_tab_id").value = data.all_info.r_c_company;
+            document.getElementById("tel_settings_tab_id").value = data.all_info.tel_company;
+            document.getElementById("if_settings_tab_id").value = data.all_info.if_company;
+            document.getElementById("cnss_settings_tab_id").value = data.all_info.cnss_company;
+            document.getElementById("ice_settings_tab_id").value = data.all_info.ice_company;
+            document.getElementById("adrresse_field_settings_tab_id").value = data.all_info.addresse_company;
+            document.getElementById("output").setAttribute('src', 'http://managementstock.herokuapp.com/companylogo/'+data.all_info.image_name_company)
+
+        })
+
+        .catch(error => {
+
+            console.error(
+
+                "There has been a problem:",
+
+                error
+
+            );
+
+        });
+
         let tbodys = document.getElementById("tbodys");
 
         tbodys.children[0].style.backgroundColor = '#43546d';
@@ -1456,7 +1497,7 @@ class Dashbord extends Component {
 
         list_des_ventes.style.display = 'block';
 
-        fetch("https://managementstock.herokuapp.com/listfactur",{
+        fetch("http://managementstock.herokuapp.com/listfactur",{
 
             method: "GET",
 
@@ -1492,7 +1533,7 @@ class Dashbord extends Component {
 
         });
 
-        fetch("https://managementstock.herokuapp.com/listsansfactur",{
+        fetch("http://managementstock.herokuapp.com/listsansfactur",{
 
             method: "GET",
 
@@ -1562,7 +1603,7 @@ class Dashbord extends Component {
 
         list_des_avoire.style.display = 'block';
 
-        fetch("https://managementstock.herokuapp.com/listavoire",{
+        fetch("http://managementstock.herokuapp.com/listavoire",{
 
             method: "GET",
 
@@ -1614,7 +1655,7 @@ class Dashbord extends Component {
 
         charge.style.display = 'block';
 
-        fetch("https://managementstock.herokuapp.com/listcharge",{
+        fetch("http://managementstock.herokuapp.com/listcharge",{
 
             method: "GET",
 
@@ -1682,7 +1723,7 @@ class Dashbord extends Component {
 
         list_product.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listproduct",{
+        fetch("http://managementstock.herokuapp.com/listproduct",{
 
             method: "GET",
 
@@ -1761,7 +1802,7 @@ class Dashbord extends Component {
 
         list_client1.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listclient",{
+        fetch("http://managementstock.herokuapp.com/listclient",{
 
             method: "GET",
 
@@ -1813,7 +1854,7 @@ class Dashbord extends Component {
 
         list_credit.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listcredit",{
+        fetch("http://managementstock.herokuapp.com/listcredit",{
 
             method: "GET",
 
@@ -1881,7 +1922,7 @@ class Dashbord extends Component {
 
         list_fourn.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listfourn",{
+        fetch("http://managementstock.herokuapp.com/listfourn",{
 
             method: "GET",
 
@@ -1933,7 +1974,7 @@ class Dashbord extends Component {
 
         list_factures.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listfactur",{
+        fetch("http://managementstock.herokuapp.com/listfactur",{
 
             method: "GET",
 
@@ -1985,7 +2026,7 @@ class Dashbord extends Component {
 
         list_devis.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listdevis",{
+        fetch("http://managementstock.herokuapp.com/listdevis",{
 
             method: "GET",
 
@@ -2037,7 +2078,7 @@ class Dashbord extends Component {
 
         list_sans_factures.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listsansfactur",{
+        fetch("http://managementstock.herokuapp.com/listsansfactur",{
 
             method: "GET",
 
@@ -2089,7 +2130,7 @@ class Dashbord extends Component {
 
         list_bl.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listbl",{
+        fetch("http://managementstock.herokuapp.com/listbl",{
 
             method: "GET",
 
@@ -2141,7 +2182,7 @@ class Dashbord extends Component {
 
         list_banque.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listbank",{
+        fetch("http://managementstock.herokuapp.com/listbank",{
 
             method: "GET",
 
@@ -2193,7 +2234,7 @@ class Dashbord extends Component {
 
         list_caisse.style.display = 'flex';
 
-        fetch("https://managementstock.herokuapp.com/listcaisson",{
+        fetch("http://managementstock.herokuapp.com/listcaisson",{
 
             method: "GET",
 
@@ -2424,7 +2465,7 @@ class Dashbord extends Component {
         }
         let obje = this.state.listcredit[index];
 
-        fetch("https://managementstock.herokuapp.com/infolistcredit/" + obje.credit_id,{
+        fetch("http://managementstock.herokuapp.com/infolistcredit/" + obje.credit_id,{
 
             method: "GET",
 
@@ -2529,7 +2570,7 @@ class Dashbord extends Component {
 
         let obje = this.state.listproduct[index];
 
-        fetch("https://managementstock.herokuapp.com/infolistproduct/" + obje.product_id,{
+        fetch("http://managementstock.herokuapp.com/infolistproduct/" + obje.product_id,{
 
             method: "GET",
 
@@ -2790,7 +2831,7 @@ class Dashbord extends Component {
 
     }
 
-    edit_avoire = () => {
+    edit_avoire = (index) => {
 
         let pop_up = document.getElementById('edit_avoire');
 
@@ -2802,9 +2843,17 @@ class Dashbord extends Component {
 
                 pop_up.style.display = 'none';
 
+                document.getElementById("qtyid").value = '';
+
             }
 
         }
+        let obje = this.state.avoire_list[index]
+
+        document.getElementById("qtyid").value = obje.qty_vente_add;
+        this.setState({
+            index_of_edit_avoire : index
+        })
 
     }
 
@@ -2877,7 +2926,7 @@ class Dashbord extends Component {
 
                 obje.remise_vente_add = remise_vente_add;
 
-                fetch("https://managementstock.herokuapp.com/ajouterproduct",{
+                fetch("http://managementstock.herokuapp.com/ajouterproduct",{
 
                     method: "POST",
 
@@ -2999,9 +3048,7 @@ class Dashbord extends Component {
                 obje.the_code = thecode;
                 obje.qty_vente_add = qty_edit_vente;
 
-                obje.remise_vente_add = remise_edit_vente;
-
-                fetch("https://managementstock.herokuapp.com/ajouterproduct",{
+                fetch("http://managementstock.herokuapp.com/ajouterproduct",{
 
                     method: "POST",
 
@@ -3025,12 +3072,14 @@ class Dashbord extends Component {
                     obje.descri = data.the_product_info.descri;
                     obje.pu = data.the_product_info.pu;
                     obje.meassurement = data.the_product_info.meassurement;
+                    
                     this.setState({
                         total_ht_vente : this.state.total_ht_vente - obje.total_ht,
                         total_ttc_vente : this.state.total_ttc_vente - (obje.total_ht + (obje.total_ht * (20/100))),
                         tva_vente : this.state.tva_vente - (obje.total_ht * (20/100)),
-                        total_remise_vente : this.state.total_remise_vente - remise_edit_vente
+                        total_remise_vente : this.state.total_remise_vente - obje.remise_vente_add
                     });
+                    obje.remise_vente_add = remise_edit_vente;
 
                     if ((remise_edit_vente === '') || (remise_edit_vente === 0)) {
                         obje.total_ht = obje.pu * obje.qty_vente_add;
@@ -3065,15 +3114,74 @@ class Dashbord extends Component {
         }
     }
 
+    submit_edit_avoire = () => {
+        let obje = this.state.avoire_list[this.state.index_of_edit_avoire];
+        let qty_edit_avoire = document.getElementById("qtyid").value;
+        if ((qty_edit_avoire === '') || (qty_edit_avoire >= obje.qty_vente_add)) {
+            alert('You must type the correct QTY');
+        } else {
+            obje.qty_vente_add = qty_edit_avoire;
+            if ((obje.remise_vente_add === '') || (obje.remise_vente_add === 0)) {
+                let totalht = obje.total_ht;
+                obje.total_ht = obje.pu * obje.qty_vente_add;
+                this.setState({
+                    total_ht_avoire : this.state.total_ht_avoire - (totalht - obje.total_ht),
+                    total_ttc_avoire : this.state.total_ttc_avoire - ((totalht - obje.total_ht) + ((totalht - obje.total_ht) * (20/100))),
+                    tva_avoire : this.state.tva_avoire - ((totalht - obje.total_ht) * (20/100))
+                });
+            } else {
+                let totalht = obje.total_ht;
+                obje.total_ht = ((obje.pu * obje.qty_vente_add) - obje.remise_vente_add);
+                this.setState({
+                    total_ht_avoire : this.state.total_ht_avoire - (totalht - obje.total_ht),
+                    total_ttc_avoire : this.state.total_ttc_avoire - ((totalht - obje.total_ht) + ((totalht - obje.total_ht) * (20/100))),
+                    tva_avoire : this.state.tva_avoire - ((totalht - obje.total_ht) * (20/100))
+                });
+            }
+            let pop_up = document.getElementById('edit_avoire');
+
+            pop_up.style.display = 'none';
+        }
+    }
+
     logout = (e) => {
 
         e.preventDefault();
+        fetch("http://managementstock.herokuapp.com/logout",{
 
-        window.location.href = '/';
+            method: "GET",
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            }
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            window.location.href = '/';
+
+        })
+
+        .catch(error => {
+
+            console.error(
+
+                "There has been a problem:",
+
+                error
+
+            );
+
+        });
 
     }
     selectgenerale = () => {
-        fetch("https://managementstock.herokuapp.com/selectgenerale",{
+        fetch("http://managementstock.herokuapp.com/selectgenerale",{
 
             method: "GET",
 
@@ -3110,7 +3218,7 @@ class Dashbord extends Component {
         });
     }
     selectcategory = () => {
-        fetch("https://managementstock.herokuapp.com/selectcategory",{
+        fetch("http://managementstock.herokuapp.com/selectcategory",{
 
             method: "GET",
 
@@ -3155,12 +3263,42 @@ class Dashbord extends Component {
         let if_settings_tab = document.getElementById("if_settings_tab_id").value;
         let cnss_settings_tab = document.getElementById("cnss_settings_tab_id").value;
         let ice_settings_tab = document.getElementById("ice_settings_tab_id").value;
-        let filename = e.target[7].files[0].name;
-        let data = new FormData();
-        let file = document.getElementById("file");
-        data.append('file', file.files[0]);
         let adrresse_field_settings_tab = document.getElementById("adrresse_field_settings_tab_id").value;
-        fetch("https://managementstock.herokuapp.com/settings",{
+        var filenamecom = '';
+        let file = document.getElementById("file");
+        if (file.files[0]) {
+            filenamecom = file.files[0].name;
+            let data = new FormData();
+            data.append('file', file.files[0]);
+            fetch("http://managementstock.herokuapp.com/image",{
+
+                method: "POST",
+
+                body: data
+
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                console.log(data);
+
+            })
+
+            .catch(error => {
+
+                console.error(
+
+                    "There has been a problem:",
+
+                    error
+
+                );
+
+            });
+        }
+        fetch("http://managementstock.herokuapp.com/settings",{
 
             method: "POST",
 
@@ -3172,7 +3310,7 @@ class Dashbord extends Component {
                 if_settings_tab: if_settings_tab,
                 cnss_settings_tab: cnss_settings_tab,
                 ice_settings_tab: ice_settings_tab,
-                filename: filename,
+                filename: filenamecom,
                 adrresse_field_settings_tab: adrresse_field_settings_tab
             }),
 
@@ -3181,33 +3319,6 @@ class Dashbord extends Component {
                 "Content-Type": "application/json"
 
             }
-
-        })
-
-        .then(response => response.json())
-
-        .then(data => {
-
-            console.log(data);
-
-        })
-
-        .catch(error => {
-
-            console.error(
-
-                "There has been a problem:",
-
-                error
-
-            );
-
-        });
-        fetch("https://managementstock.herokuapp.com/image",{
-
-            method: "POST",
-
-            body: data
 
         })
 
@@ -3229,7 +3340,7 @@ class Dashbord extends Component {
 
             );
 
-        });
+        });        
     }
     submit_add_fourn = (e) => {
         e.preventDefault();
@@ -3240,7 +3351,7 @@ class Dashbord extends Component {
         let fax = document.getElementById("fax_add_fourn_id1").value;
         let adresse = document.getElementById("adrresse_field_add_fourn_id1").value;
         let activite = document.getElementById("activite_field_add_fourn_id1").value;
-        fetch("https://managementstock.herokuapp.com/addfourn",{
+        fetch("http://managementstock.herokuapp.com/addfourn",{
 
             method: "POST",
 
@@ -3266,7 +3377,11 @@ class Dashbord extends Component {
 
         .then(data => {
 
-            alert("You have added a Fournisseur");
+            if (data.found === 'yes') {
+                alert('You have that fournisser in the Website');
+            } else {
+                alert("You have added a Fournisseur");
+            }
 
         })
 
@@ -3286,7 +3401,7 @@ class Dashbord extends Component {
     addgenerale = (e) => {
         e.preventDefault();
         let new_generale = document.getElementById("input_for_generale_new_id").value;
-        fetch("https://managementstock.herokuapp.com/addgenerale",{
+        fetch("http://managementstock.herokuapp.com/addgenerale",{
 
             method: "POST",
 
@@ -3330,7 +3445,7 @@ class Dashbord extends Component {
     addcategory = (e) => {
         e.preventDefault();
         let new_category = document.getElementById("input_for_category_new_id").value;
-        fetch("https://managementstock.herokuapp.com/addcategory",{
+        fetch("http://managementstock.herokuapp.com/addcategory",{
 
             method: "POST",
 
@@ -3372,7 +3487,7 @@ class Dashbord extends Component {
     }
     del_list_fourn = (ind) => {
         if (window.confirm('are you sure you want to delete the Fournisseur?')) {
-            fetch("https://managementstock.herokuapp.com/listfourn/" + ind,{
+            fetch("http://managementstock.herokuapp.com/listfourn/" + ind,{
 
                 method: "DELETE",
 
@@ -3415,7 +3530,7 @@ class Dashbord extends Component {
         let edit_fourn6 = document.getElementById("adrresse_field_edit_fourn_id").value;
         let edit_fourn7 = document.getElementById("activite_field_edit_fourn_id").value;
         let index_of_edit_fourn = this.state.index_of_edit_fourn;
-        fetch("https://managementstock.herokuapp.com/editfourn",{
+        fetch("http://managementstock.herokuapp.com/editfourn",{
 
             method: "POST",
 
@@ -3442,11 +3557,15 @@ class Dashbord extends Component {
 
         .then(data => {
 
-            alert("You have Edited a Fournisseur");
-            let pop_up = document.getElementById('pop_up_fourn_list');
+            if (data.found === 'yes') {
+                alert('You have that founisser in the website');
+            } else {
+                alert("You have Edited a Fournisseur");
+                let pop_up = document.getElementById('pop_up_fourn_list');
 
-            pop_up.style.display = 'none';
-            this.list_fourn();
+                pop_up.style.display = 'none';
+                this.list_fourn();
+            }
 
         })
 
@@ -3463,7 +3582,7 @@ class Dashbord extends Component {
         });
     }
     selectfourn = () => {
-        fetch("https://managementstock.herokuapp.com/selectfourn",{
+        fetch("http://managementstock.herokuapp.com/selectfourn",{
 
             method: "GET",
 
@@ -3507,7 +3626,7 @@ class Dashbord extends Component {
         let cin_add_client_n_ice = document.getElementById("cin_add_client_n_ice_id1").value;
         let cin_add_client_cin = document.getElementById("cin_add_client_cin_id1").value;
         let address_add_client_adresse = document.getElementById("address_add_client_adresse_id1").value;
-        fetch("https://managementstock.herokuapp.com/addclient",{
+        fetch("http://managementstock.herokuapp.com/addclient",{
 
             method: "POST",
 
@@ -3532,7 +3651,11 @@ class Dashbord extends Component {
 
         .then(data => {
 
-            alert("You have added a Client");
+            if (data.found === 'yes') {
+                alert('You have that Client in the website');
+            } else {
+                alert("You have added a Client");
+            }
 
         })
 
@@ -3550,7 +3673,7 @@ class Dashbord extends Component {
     }
     del_list_client = (ind) => {
         if (window.confirm('are you sure you want to delete the Client?')) {
-            fetch("https://managementstock.herokuapp.com/listclient/" + ind,{
+            fetch("http://managementstock.herokuapp.com/listclient/" + ind,{
 
                 method: "DELETE",
 
@@ -3592,7 +3715,7 @@ class Dashbord extends Component {
         let edit_client5 = document.getElementById("cin_add_client_cin_id").value;
         let edit_client6 = document.getElementById("address_add_client_adresse_id").value;
         let index_of_edit_client = this.state.index_of_edit_client;
-        fetch("https://managementstock.herokuapp.com/editclient",{
+        fetch("http://managementstock.herokuapp.com/editclient",{
 
             method: "POST",
 
@@ -3618,11 +3741,15 @@ class Dashbord extends Component {
 
         .then(data => {
 
-            alert("You have Edited a Client");
-            let pop_up = document.getElementById('pop_up_client_list');
+            if (data.found === 'yes') {
+                alert('You have that Client in the website');
+            } else {
+                alert("You have Edited a Client");
+                let pop_up = document.getElementById('pop_up_client_list');
 
-            pop_up.style.display = 'none';
-            this.list_client();
+                pop_up.style.display = 'none';
+                this.list_client();
+            }
 
         })
 
@@ -3642,7 +3769,7 @@ class Dashbord extends Component {
         e.preventDefault();
         let input_for_montant_id = document.getElementById("input_for_montant_id").value;
         let index_id = this.state.info_for_montant_generale_name.index_id;
-        fetch("https://managementstock.herokuapp.com/misejour",{
+        fetch("http://managementstock.herokuapp.com/misejour",{
 
             method: "POST",
 
@@ -3695,13 +3822,43 @@ class Dashbord extends Component {
         let meter_measurement_add_product = document.getElementById("meter_measurement_add_product_id1").checked;
         let description_field_add_product = document.getElementById("description_field_add_product_id1").value;
         let min_qty_alert = document.getElementById("min_qty_alert_id1").value;
-        let filename = document.getElementById("logo").files[0].name;
+        var filenamelogo = '';
         let pu_devis_add_product = document.getElementById("pu_devis_add_product_id1").value;
         let prix_d_achat_add_product = document.getElementById("prix_d_achat_add_product_id1").value;
         let prix_de_vente_add_product = document.getElementById("prix_de_vente_add_product_id1").value;
-        let data = new FormData();
         let file = document.getElementById("logo");
-        data.append('file', file.files[0]);
+        if (file.files[0]) {
+            filenamelogo = file.files[0].name;
+            let data = new FormData();
+            data.append('file', file.files[0]);
+            fetch("http://managementstock.herokuapp.com/logoproduct",{
+
+                method: "POST",
+
+                body: data
+
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                console.log(data);
+
+            })
+
+            .catch(error => {
+
+                console.error(
+
+                    "There has been a problem:",
+
+                    error
+
+                );
+
+            });
+        }
         if ((kg_measurement_add_product === true) && (meter_measurement_add_product === true)) {
             alert("You cannot choose both Kg & m. Choose ONLY ONE or DON'T choose ANY.");
         } else {
@@ -3714,84 +3871,61 @@ class Dashbord extends Component {
                     kg_or_m = 'm';
                 }
             }
-            fetch("https://managementstock.herokuapp.com/addproduct",{
+            fetch("http://managementstock.herokuapp.com/addproduct",{
 
-            method: "POST",
+                method: "POST",
 
-            body: JSON.stringify({
-                fourn_select_add_product: fourn_select_add_product,
-                category_select_add_product: category_select_add_product,
-                bar_code_add_product: bar_code_add_product,
-                referance_add_product: referance_add_product,
-                qty_add_product: qty_add_product,
-                kg_or_m: kg_or_m,
-                description_field_add_product: description_field_add_product,
-                min_qty_alert : min_qty_alert,
-                pu_devis_add_product : pu_devis_add_product,
-                prix_d_achat_add_product : prix_d_achat_add_product,
-                prix_de_vente_add_product : prix_de_vente_add_product,
-                filename: filename
-            }),
+                body: JSON.stringify({
+                    fourn_select_add_product: fourn_select_add_product,
+                    category_select_add_product: category_select_add_product,
+                    bar_code_add_product: bar_code_add_product,
+                    referance_add_product: referance_add_product,
+                    qty_add_product: qty_add_product,
+                    kg_or_m: kg_or_m,
+                    description_field_add_product: description_field_add_product,
+                    min_qty_alert : min_qty_alert,
+                    pu_devis_add_product : pu_devis_add_product,
+                    prix_d_achat_add_product : prix_d_achat_add_product,
+                    prix_de_vente_add_product : prix_de_vente_add_product,
+                    filename: filenamelogo
+                }),
 
-            headers: {
+                headers: {
 
-                "Content-Type": "application/json"
+                    "Content-Type": "application/json"
 
-            }
+                }
 
-        })
+            })
 
-        .then(response => response.json())
+            .then(response => response.json())
 
-        .then(data => {
+            .then(data => {
 
-            console.log(data);
+                if (data.found === 'yes') {
+                    alert('You have that product in the website');
+                } else {
+                    alert("You have added a Product");
+                }
 
-        })
+            })
 
-        .catch(error => {
+            .catch(error => {
 
-            console.error(
+                console.error(
 
-                "There has been a problem:",
+                    "There has been a problem:",
 
-                error
+                    error
 
-            );
+                );
 
-        });
-        fetch("https://managementstock.herokuapp.com/logoproduct",{
-
-            method: "POST",
-
-            body: data
-
-        })
-
-        .then(response => response.json())
-
-        .then(data => {
-
-            alert("You have added a Product");
-
-        })
-
-        .catch(error => {
-
-            console.error(
-
-                "There has been a problem:",
-
-                error
-
-            );
-
-        });
+            });
         }
     }
     del_list_product = (ind) => {
         if (window.confirm('are you sure you want to delete the Product?')) {
-            fetch("https://managementstock.herokuapp.com/dellistproduct/" + ind,{
+            fetch("http://managementstock.herokuapp.com/dellistproduct/" + ind,{
 
                 method: "DELETE",
 
@@ -3831,7 +3965,7 @@ class Dashbord extends Component {
         let pu_devis_add_product = document.getElementById("pu_devis_add_product_id").value;
         let prix_d_achat_add_product = document.getElementById("prix_d_achat_add_product_id").value;
         let prix_de_vente_add_product = document.getElementById("prix_de_vente_add_product_id").value;
-        fetch("https://managementstock.herokuapp.com/addproductstorage",{
+        fetch("http://managementstock.herokuapp.com/addproductstorage",{
 
             method: "POST",
 
@@ -3881,7 +4015,7 @@ class Dashbord extends Component {
     }
     del_list_charge = (id) => {
         if (window.confirm('are you sure you want to delete the Charge?')) {
-            fetch("https://managementstock.herokuapp.com/dellistcharge/" + id,{
+            fetch("http://managementstock.herokuapp.com/dellistcharge/" + id,{
 
                 method: "DELETE",
 
@@ -3918,7 +4052,7 @@ class Dashbord extends Component {
         e.preventDefault();
         let listdes_avoire_description = document.getElementById("listdes_avoire_description_id").value;
         let listdes_avoire_prix = document.getElementById("listdes_avoire_prix_id").value;
-        fetch("https://managementstock.herokuapp.com/addcharge",{
+        fetch("http://managementstock.herokuapp.com/addcharge",{
 
             method: "POST",
 
@@ -3958,7 +4092,7 @@ class Dashbord extends Component {
     }
     del_list_factur = (id) => {
         if (window.confirm('are you sure you want to delete the Facture?')) {
-            fetch("https://managementstock.herokuapp.com/dellistfactur/" + id,{
+            fetch("http://managementstock.herokuapp.com/dellistfactur/" + id,{
 
                 method: "DELETE",
 
@@ -3993,7 +4127,7 @@ class Dashbord extends Component {
     }
     del_list_devis = (id) => {
         if (window.confirm('are you sure you want to delete the Devis?')) {
-            fetch("https://managementstock.herokuapp.com/dellistdevis/" + id,{
+            fetch("http://managementstock.herokuapp.com/dellistdevis/" + id,{
 
                 method: "DELETE",
 
@@ -4028,7 +4162,7 @@ class Dashbord extends Component {
     }
     del_list_sans_factur = (id) => {
         if (window.confirm('are you sure you want to delete the Sans Facture?')) {
-            fetch("https://managementstock.herokuapp.com/dellistsansfactur/" + id,{
+            fetch("http://managementstock.herokuapp.com/dellistsansfactur/" + id,{
 
                 method: "DELETE",
 
@@ -4063,7 +4197,7 @@ class Dashbord extends Component {
     }
     del_list_bl = (id) => {
         if (window.confirm('are you sure you want to delete the B.L.?')) {
-            fetch("https://managementstock.herokuapp.com/dellistbl/" + id,{
+            fetch("http://managementstock.herokuapp.com/dellistbl/" + id,{
 
                 method: "DELETE",
 
@@ -4098,7 +4232,7 @@ class Dashbord extends Component {
     }
     devis_be_factur = (id) => {
         if (window.confirm('are you sure you want to make that Devis a Facture?')) {
-            fetch("https://managementstock.herokuapp.com/devisbefactur",{
+            fetch("http://managementstock.herokuapp.com/devisbefactur",{
 
                 method: "POST",
 
@@ -4145,7 +4279,7 @@ class Dashbord extends Component {
     }
     sans_be_factur = (id) => {
         if (window.confirm('are you sure you want to make that Sans Facture a Facture?')) {
-            fetch("https://managementstock.herokuapp.com/sansbefactur",{
+            fetch("http://managementstock.herokuapp.com/sansbefactur",{
 
                 method: "POST",
 
@@ -4190,7 +4324,7 @@ class Dashbord extends Component {
             });
         }
     }
-    bl_be_factur = (id,index) => {
+    bl_be_factur = () => {
         let array_of_bl =  [];
         for (let i = 0; i < this.state.listbl.length; i++) {
             let bl = this.state.listbl[i];
@@ -4207,7 +4341,8 @@ class Dashbord extends Component {
         }
         if (array_of_bl.length > 0) {
             if (window.confirm('are you sure you want to make that B.L. a Facture?')) {
-                fetch("https://managementstock.herokuapp.com/blbefactur",{
+                console.log(array_of_bl);
+                fetch("http://managementstock.herokuapp.com/blbefactur",{
     
                     method: "POST",
     
@@ -4254,7 +4389,7 @@ class Dashbord extends Component {
         }
     }
     selectfactur = () => {
-        fetch("https://managementstock.herokuapp.com/listfactur",{
+        fetch("http://managementstock.herokuapp.com/listfactur",{
 
             method: "GET",
 
@@ -4291,7 +4426,7 @@ class Dashbord extends Component {
         });
     }
     selectclient = () => {
-        fetch("https://managementstock.herokuapp.com/listclient",{
+        fetch("http://managementstock.herokuapp.com/listclient",{
 
             method: "GET",
 
@@ -4329,7 +4464,7 @@ class Dashbord extends Component {
     }
     del_list_avoire = (id) => {
         if (window.confirm('are you sure you want to delete the Avoire?')) {
-            fetch("https://managementstock.herokuapp.com/dellistavoire/" + id,{
+            fetch("http://managementstock.herokuapp.com/dellistavoire/" + id,{
 
                 method: "DELETE",
 
@@ -4370,7 +4505,7 @@ class Dashbord extends Component {
         let cin_add_client_n_ice = document.getElementById("cin_add_client_n_ice_id2").value;
         let cin_add_client_cin = document.getElementById("cin_add_client_cin_id2").value;
         let address_add_client_adresse = document.getElementById("address_add_client_adresse_id2").value;
-        fetch("https://managementstock.herokuapp.com/addclient",{
+        fetch("http://managementstock.herokuapp.com/addclient",{
 
             method: "POST",
 
@@ -4395,10 +4530,13 @@ class Dashbord extends Component {
 
         .then(data => {
 
-            alert("You have added a Client");
-            let pop_up = document.getElementById('new_client_vente');
-
-            pop_up.style.display = 'none';
+            if (data.found === 'yes') {
+                alert('You have that Client in the website');
+            } else {
+                alert("You have added a Client");
+                let pop_up = document.getElementById('new_client_vente');
+                pop_up.style.display = 'none';
+            }
 
         })
 
@@ -4417,7 +4555,7 @@ class Dashbord extends Component {
     submit_search_caisson = (e) => {
         e.preventDefault();
         let client_srch_list_caisse = document.getElementById("client_srch_list_caisse_id").value;
-        fetch("https://managementstock.herokuapp.com/caisson/search",{
+        fetch("http://managementstock.herokuapp.com/caisson/search",{
 
             method: "POST",
 
@@ -4460,55 +4598,12 @@ class Dashbord extends Component {
     submit_search_bank = (e) => {
         e.preventDefault();
         let client_srch_list_banque = document.getElementById("client_srch_list_banque_id").value;
-        fetch("https://managementstock.herokuapp.com/bank/search",{
+        fetch("http://managementstock.herokuapp.com/bank/search",{
 
             method: "POST",
 
             body: JSON.stringify({
                 searchTerm : client_srch_list_banque
-            }),
-
-            headers: {
-
-                "Content-Type": "application/json"
-
-            }
-
-        })
-
-        .then(response => response.json())
-
-        .then(data => {
-
-            this.setState({
-
-                listbl: data.search_result
-
-            })
-
-        })
-
-        .catch(error => {
-
-            console.error(
-
-                "There has been a problem:",
-
-                error
-
-            );
-
-        });
-    }
-    submit_search_bl_client = (e) => {
-        e.preventDefault();
-        let client_srch_list_bl = document.getElementById("client_srch_list_bl_id").value;
-        fetch("https://managementstock.herokuapp.com/bl/search/client",{
-
-            method: "POST",
-
-            body: JSON.stringify({
-                searchTerm : client_srch_list_bl
             }),
 
             headers: {
@@ -4543,10 +4638,53 @@ class Dashbord extends Component {
 
         });
     }
+    submit_search_bl_client = (e) => {
+        e.preventDefault();
+        let client_srch_list_bl = document.getElementById("client_srch_list_bl_id").value;
+        fetch("http://managementstock.herokuapp.com/bl/search/client",{
+
+            method: "POST",
+
+            body: JSON.stringify({
+                searchTerm : client_srch_list_bl
+            }),
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            }
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            this.setState({
+
+                listbl: data.search_result
+
+            })
+
+        })
+
+        .catch(error => {
+
+            console.error(
+
+                "There has been a problem:",
+
+                error
+
+            );
+
+        });
+    }
     submit_search_bl_date = (e) => {
         e.preventDefault();
         let Date_srch_list_bl = document.getElementById("Date_srch_list_bl_id").value;
-        fetch("https://managementstock.herokuapp.com/bl/search/date",{
+        fetch("http://managementstock.herokuapp.com/bl/search/date",{
 
             method: "POST",
 
@@ -4589,7 +4727,7 @@ class Dashbord extends Component {
     submit_search_sans_client = (e) => {
         e.preventDefault();
         let client_srch_list_sans_factures = document.getElementById("client_srch_list_sans_factures_id").value;
-        fetch("https://managementstock.herokuapp.com/sans/search/client",{
+        fetch("http://managementstock.herokuapp.com/sans/search/client",{
 
             method: "POST",
 
@@ -4632,7 +4770,7 @@ class Dashbord extends Component {
     submit_search_sans_date = (e) => {
         e.preventDefault();
         let Date_srch_list_sans_factures = document.getElementById("Date_srch_list_sans_factures_id").value;
-        fetch("https://managementstock.herokuapp.com/sans/search/date",{
+        fetch("http://managementstock.herokuapp.com/sans/search/date",{
 
             method: "POST",
 
@@ -4675,7 +4813,7 @@ class Dashbord extends Component {
     submit_search_devis_client = (e) => {
         e.preventDefault();
         let client_srch_list_devis = document.getElementById("client_srch_list_devis_id").value;
-        fetch("https://managementstock.herokuapp.com/devis/search/client",{
+        fetch("http://managementstock.herokuapp.com/devis/search/client",{
 
             method: "POST",
 
@@ -4718,7 +4856,7 @@ class Dashbord extends Component {
     submit_search_devis_date = (e) => {
         e.preventDefault();
         let Date_srch_list_devis = document.getElementById("Date_srch_list_devis_id").value;
-        fetch("https://managementstock.herokuapp.com/devis/search/date",{
+        fetch("http://managementstock.herokuapp.com/devis/search/date",{
 
             method: "POST",
 
@@ -4761,7 +4899,7 @@ class Dashbord extends Component {
     submit_search_factur_client = (e) => {
         e.preventDefault();
         let client_srch_list_factures = document.getElementById("client_srch_list_factures_id").value;
-        fetch("https://managementstock.herokuapp.com/factur/search/client",{
+        fetch("http://managementstock.herokuapp.com/factur/search/client",{
 
             method: "POST",
 
@@ -4804,7 +4942,7 @@ class Dashbord extends Component {
     submit_search_factur_date = (e) => {
         e.preventDefault();
         let Date_srch_list_factures = document.getElementById("Date_srch_list_factures_id").value;
-        fetch("https://managementstock.herokuapp.com/factur/search/date",{
+        fetch("http://managementstock.herokuapp.com/factur/search/date",{
 
             method: "POST",
 
@@ -4847,7 +4985,7 @@ class Dashbord extends Component {
     submit_search_fourn_act = (e) => {
         e.preventDefault();
         let activite_input_search_list_fourn = document.getElementById("activite_input_search_list_fourn_id").value;
-        fetch("https://managementstock.herokuapp.com/fourn/activite/search",{
+        fetch("http://managementstock.herokuapp.com/fourn/activite/search",{
 
             method: "POST",
 
@@ -4890,7 +5028,7 @@ class Dashbord extends Component {
     submit_search_fourn_name = (e) => {
         e.preventDefault();
         let nom_input_search_list_fourn = document.getElementById("nom_input_search_list_fourn_id").value;
-        fetch("https://managementstock.herokuapp.com/fourn/name/search",{
+        fetch("http://managementstock.herokuapp.com/fourn/name/search",{
 
             method: "POST",
 
@@ -4933,7 +5071,7 @@ class Dashbord extends Component {
     submit_search_credit_client = (e) => {
         e.preventDefault();
         let nom_input_search_list_credit = document.getElementById("nom_input_search_list_credit_id").value;
-        fetch("https://managementstock.herokuapp.com/credit/name/search",{
+        fetch("http://managementstock.herokuapp.com/credit/name/search",{
 
             method: "POST",
 
@@ -4976,7 +5114,7 @@ class Dashbord extends Component {
     submit_search_client_ice = (e) => {
         e.preventDefault();
         let ice_input_search_list_client = document.getElementById("ice_input_search_list_client_id").value;
-        fetch("https://managementstock.herokuapp.com/client/ice/search",{
+        fetch("http://managementstock.herokuapp.com/client/ice/search",{
 
             method: "POST",
 
@@ -5019,7 +5157,7 @@ class Dashbord extends Component {
     submit_search_client_name = (e) => {
         e.preventDefault();
         let name_input_search_list_client = document.getElementById("name_input_search_list_client_id").value;
-        fetch("https://managementstock.herokuapp.com/client/name/search",{
+        fetch("http://managementstock.herokuapp.com/client/name/search",{
 
             method: "POST",
 
@@ -5062,7 +5200,7 @@ class Dashbord extends Component {
     submit_search_product_category = (e) => {
         e.preventDefault();
         let categorie_input_search_list_product = document.getElementById("categorie_input_search_list_product_id").value;
-        fetch("https://managementstock.herokuapp.com/product/category/search",{
+        fetch("http://managementstock.herokuapp.com/product/category/search",{
 
             method: "POST",
 
@@ -5105,7 +5243,7 @@ class Dashbord extends Component {
     submit_search_product_barcode = (e) => {
         e.preventDefault();
         let recherche_input_search_list_product = document.getElementById("recherche_input_search_list_product_id").value;
-        fetch("https://managementstock.herokuapp.com/product/barcode/search",{
+        fetch("http://managementstock.herokuapp.com/product/barcode/search",{
 
             method: "POST",
 
@@ -5148,7 +5286,7 @@ class Dashbord extends Component {
     submit_search_charge_date = (e) => {
         e.preventDefault();
         let from_date_srch_lst_ventes = document.getElementById("from_date_srch_lst_ventes_id3").value;
-        fetch("https://managementstock.herokuapp.com/charge/search/date",{
+        fetch("http://managementstock.herokuapp.com/charge/search/date",{
 
             method: "POST",
 
@@ -5191,7 +5329,7 @@ class Dashbord extends Component {
     submit_search_avoire_date = (e) => {
         e.preventDefault();
         let from_date_srch_lst_ventes = document.getElementById("from_date_srch_lst_ventes_id2").value;
-        fetch("https://managementstock.herokuapp.com/avoire/search/date",{
+        fetch("http://managementstock.herokuapp.com/avoire/search/date",{
 
             method: "POST",
 
@@ -5234,7 +5372,7 @@ class Dashbord extends Component {
     submit_search_vente_date = (e) => {
         e.preventDefault();
         let from_date_srch_lst_ventes = document.getElementById("from_date_srch_lst_ventes_id1").value;
-        fetch("https://managementstock.herokuapp.com/factur/search/date",{
+        fetch("http://managementstock.herokuapp.com/factur/search/date",{
 
             method: "POST",
 
@@ -5273,7 +5411,7 @@ class Dashbord extends Component {
             );
 
         });
-        fetch("https://managementstock.herokuapp.com/sans/search/date",{
+        fetch("http://managementstock.herokuapp.com/sans/search/date",{
 
             method: "POST",
 
@@ -5316,7 +5454,7 @@ class Dashbord extends Component {
     submit_search_vente_client = (e) => {
         e.preventDefault();
         let name_srch_lst_ventes = document.getElementById("name_srch_lst_ventes_id").value;
-        fetch("https://managementstock.herokuapp.com/factur/search/client",{
+        fetch("http://managementstock.herokuapp.com/factur/search/client",{
 
             method: "POST",
 
@@ -5355,7 +5493,7 @@ class Dashbord extends Component {
             );
 
         });
-        fetch("https://managementstock.herokuapp.com/sans/search/client",{
+        fetch("http://managementstock.herokuapp.com/sans/search/client",{
 
             method: "POST",
 
@@ -5505,7 +5643,7 @@ class Dashbord extends Component {
             } else {
                 console.log(this.state.vente_add);
                 console.log(this.state.regelmentvente);
-                fetch("https://managementstock.herokuapp.com/addfactur",{
+                fetch("http://managementstock.herokuapp.com/addfactur",{
 
                     method: "POST",
 
@@ -5538,7 +5676,7 @@ class Dashbord extends Component {
                             alert("Choose the client ,Regelement and add products and press again");
                         } else {
                             alert("You have added a Facture");
-                            window.open("https://managementstock1.herokuapp.com/factur/" + data.factur_id, "_blank");
+                            window.open("http://managementstock1.herokuapp.com/factur/" + data.factur_id, "_blank");
                             window.location.reload();
                         }
                     }
@@ -5563,7 +5701,7 @@ class Dashbord extends Component {
             if (Object.keys(this.state.regelmentvente).length === 0) {
                 alert("You Must choose how to pay");
             } else {
-                fetch("https://managementstock.herokuapp.com/addsansfactur",{
+                fetch("http://managementstock.herokuapp.com/addsansfactur",{
 
                     method: "POST",
 
@@ -5616,7 +5754,7 @@ class Dashbord extends Component {
             if (Object.keys(this.state.regelmentvente).length === 0) {
                 alert("You Must choose how to pay");
             } else {
-                fetch("https://managementstock.herokuapp.com/adddevis",{
+                fetch("http://managementstock.herokuapp.com/adddevis",{
 
                     method: "POST",
 
@@ -5646,7 +5784,7 @@ class Dashbord extends Component {
                         alert("Choose the client ,Regelement and add products and press again");
                     } else {
                         alert("You have added a Devis");
-                        window.open("https://managementstock1.herokuapp.com/devis/" + data.devis_id, "_blank");
+                        window.open("http://managementstock1.herokuapp.com/devis/" + data.devis_id, "_blank");
                         window.location.reload();
                     }
 
@@ -5670,7 +5808,7 @@ class Dashbord extends Component {
             if (Object.keys(this.state.regelmentvente).length === 0) {
                 alert("You Must choose how to pay");
             } else {
-                fetch("https://managementstock.herokuapp.com/addbl",{
+                fetch("http://managementstock.herokuapp.com/addbl",{
 
                     method: "POST",
 
@@ -5700,7 +5838,7 @@ class Dashbord extends Component {
                         alert("Choose the client ,Regelement and add products and press again");
                     } else {
                         alert("You have added a B.L");
-                        window.open("https://managementstock1.herokuapp.com/bl/" + data.bl_id, "_blank");
+                        window.open("http://managementstock1.herokuapp.com/bl/" + data.bl_id, "_blank");
                         window.location.reload();
                     }
 
@@ -5716,7 +5854,7 @@ class Dashbord extends Component {
     }
     selectclient_avoire = () => {
         let chooseclient = document.getElementById("chooseclientid2").value;
-        fetch("https://managementstock.herokuapp.com/selectclientavoire",{
+        fetch("http://managementstock.herokuapp.com/selectclientavoire",{
 
             method: "POST",
 
@@ -5748,7 +5886,7 @@ class Dashbord extends Component {
     }
     selectfactur_avoire = () => {
         let choosefactur = document.getElementById("choosefacturid").value;
-        fetch("https://managementstock.herokuapp.com/selectfacturavoire",{
+        fetch("http://managementstock.herokuapp.com/selectfacturavoire",{
 
             method: "POST",
 
@@ -5878,7 +6016,7 @@ class Dashbord extends Component {
             } else {
                 console.log(this.state.avoire_list);
                 console.log(this.state.avoire_regelement);
-                fetch("https://managementstock.herokuapp.com/addavoire",{
+                fetch("http://managementstock.herokuapp.com/addavoire",{
 
                     method: "POST",
 
@@ -5906,7 +6044,7 @@ class Dashbord extends Component {
 
                 .then(data => {
                     alert("You have added a Avoire");
-                    window.open("https://managementstock1.herokuapp.com/avoire/" + data.avoire_id, "_blank");
+                    window.open("http://managementstock1.herokuapp.com/avoire/" + data.avoire_id, "_blank");
                     window.location.reload();
 
                 })
@@ -6749,7 +6887,7 @@ class Dashbord extends Component {
 
                                                         <td>-{val.total_ht}</td>
 
-                                                        <td><span onClick={()=>this.remove_avoire(index)} className='fas fa-trash'></span></td>
+                                                        <td><span onClick={()=>this.remove_avoire(index)} className='fas fa-trash'></span><span onClick={()=>this.edit_avoire(index)} className='fas fa-edit'></span></td>
 
                                                     </tr>
 
@@ -7968,6 +8106,7 @@ class Dashbord extends Component {
                             <div className='h1_list_factures'>
 
                                 <h1>Listes B.L</h1>
+                                <span onClick={() => this.bl_be_factur()} className='fas fa-check'></span>
 
                             </div>
 
@@ -8036,7 +8175,7 @@ class Dashbord extends Component {
     
                                                     <td>{val.montant_list_bl}</td>
     
-                                                    <td><input type="checkbox" id={val.id} value={val.id} className={'checkboxclass' + val.client_id_list_bl} /><span onClick={() => this.del_list_bl(val.id)} className='fas fa-trash'></span><a href={'/bl/'+ val.id} target='_blank' rel='noreferrer' className='fas fa-eye'></a><span onClick={() => this.bl_be_factur(val.id,index)} className='fas fa-check'></span></td>
+                                                    <td><input type="checkbox" id={val.id} value={val.id} className={'checkboxclass' + val.client_id_list_bl} /><span onClick={() => this.del_list_bl(val.id)} className='fas fa-trash'></span><a href={'/bl/'+ val.id} target='_blank' rel='noreferrer' className='fas fa-eye'></a></td>
     
                                                 </tr>
     
@@ -8967,7 +9106,7 @@ class Dashbord extends Component {
 
                             <div className='logo_for_product_list_product'>
 
-                                <img src={'https://managementstock.herokuapp.com/productlogo/' + this.state.info_for_product.logo_product} alt='productLogo' />
+                                <img src={'http://managementstock.herokuapp.com/productlogo/' + this.state.info_for_product.logo_product} alt='productLogo' />
 
                             </div>
 
@@ -9175,47 +9314,15 @@ class Dashbord extends Component {
 
                             <div className='product_add_info_div product_add_info_div1'>
 
-                                <div className='barcodetext'>
-
-                                    <input type="text" name="barcodename" id="barcodeid" placeholder='BAR CODE' />
-
-                                </div>
-
-                                <div className='referancetext'>
-
-                                    <input type="text" name="referancename" id="referanceid" placeholder='Referance' />
-
-                                </div>
-
                                 <div className='qtytext'>
 
-                                    <input type="text" name="qtyname" id="qtyid" placeholder='QTY' />
-
-                                </div>
-
-                                <div className='measurement'>
-
-                                    <div className='kgcheck'>
-
-                                        <input type="checkbox" name="kgname" value="Kg" />
-
-                                        <label htmlFor="Kg">Kg</label>
-
-                                    </div>
-
-                                    <div className='metercheck'>
-
-                                        <input type="checkbox" name="metername" value="m" />
-
-                                        <label htmlFor="meter">m</label>
-
-                                    </div>
+                                    <input type="number" name="qtyname" id="qtyid" placeholder='QTY' />
 
                                 </div>
 
                                 <div className='addbtn addbtn1 addbtn_avoire'>
 
-                                    <div>
+                                    <div onClick={this.submit_edit_avoire}>
 
                                         Modifier
 

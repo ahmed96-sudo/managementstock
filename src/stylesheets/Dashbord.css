@@ -531,7 +531,7 @@ hr {
 }
 .qtytext {
     height: 100%;
-    width: 13%;
+    width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -544,6 +544,9 @@ hr {
     padding-left: 15px;
     color: #7e7e7e;
     font-weight: bold;
+}
+.product_add_info_div1 .qtytext {
+    width: 50%;
 }
 .measurement {
     height: 100%;
@@ -1028,7 +1031,7 @@ div#list_des_ventes {
     width: 100%;
 }
 .addbtn_avoire {
-    width: 37%;
+    width: 50%;
 }
 .choosedate_avoire {
     margin-left: 100px;
@@ -2319,6 +2322,16 @@ div#list_factures,#list_devis,#list_sans_factures,#list_bl {
     color: #777;
     padding-left: 40px;
 }
+.h1_list_factures span {
+    margin-left: 20px;
+    background-color: white;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
 .srch_list_factures {
     height: 100%;
     width: 60%;
@@ -3506,7 +3519,7 @@ input#submit_for__montant_id:hover {
     background-color: #fefefe;
     margin: 14% auto;
     border: 1px solid #888;
-    width: 70%;
+    width: 50%;
     height: 200px;
 }
 .popup_content12 form {

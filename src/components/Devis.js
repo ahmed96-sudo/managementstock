@@ -24,7 +24,7 @@ class Devis extends Component {
     }
     componentDidMount(){
 
-        fetch("https://managementstock.herokuapp.com/devis/" + window.location.pathname.substr(7),{
+        fetch("http://managementstock.herokuapp.com/devis/" + window.location.pathname.substr(7),{
 
             method: "GET",
 
@@ -61,7 +61,7 @@ class Devis extends Component {
             );
 
         });
-        fetch("https://managementstock.herokuapp.com/settingsinfo",{
+        fetch("http://managementstock.herokuapp.com/settingsinfo",{
 
             method: "GET",
 
@@ -101,7 +101,7 @@ class Devis extends Component {
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the Devis?")) {
-            fetch("https://managementstock.herokuapp.com/downloaddevis/" + window.location.pathname.substr(7),{
+            fetch("http://managementstock.herokuapp.com/downloaddevis/" + window.location.pathname.substr(7),{
 
                 method: "GET",
 
@@ -118,8 +118,8 @@ class Devis extends Component {
             .then(data => {
 
                 let name_of_factur = data.devis_id;
-                window.open("https://managementstock.herokuapp.com/senddevis/" + name_of_factur, "_blank");
-                window.open("https://managementstock.herokuapp.com/removedevis/" + name_of_factur, "_blank");
+                window.open("http://managementstock.herokuapp.com/senddevis/" + name_of_factur, "_blank");
+                window.open("http://managementstock.herokuapp.com/removedevis/" + name_of_factur, "_blank");
 
             })
 
@@ -147,7 +147,7 @@ class Devis extends Component {
                         <p>{this.state.all_info.tel_company}</p>
                     </div>
                     <div className="photodate">
-                        <img src={'https://managementstock.herokuapp.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
+                        <img src={'http://managementstock.herokuapp.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
                         <p>{this.state.devisinfo.Date_operation_list_devis}</p>
                     </div>
                 </div>

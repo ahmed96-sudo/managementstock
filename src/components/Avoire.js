@@ -24,7 +24,7 @@ class Avoire extends Component {
     }
     componentDidMount(){
 
-        fetch("https://managementstock.herokuapp.com/avoire/" + window.location.pathname.substr(8),{
+        fetch("http://managementstock.herokuapp.com/avoire/" + window.location.pathname.substr(8),{
 
             method: "GET",
 
@@ -61,7 +61,7 @@ class Avoire extends Component {
             );
 
         });
-        fetch("https://managementstock.herokuapp.com/settingsinfo",{
+        fetch("http://managementstock.herokuapp.com/settingsinfo",{
 
             method: "GET",
 
@@ -101,7 +101,7 @@ class Avoire extends Component {
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the Avoire?")) {
-            fetch("https://managementstock.herokuapp.com/downloadavoire/" + window.location.pathname.substr(8),{
+            fetch("http://managementstock.herokuapp.com/downloadavoire/" + window.location.pathname.substr(8),{
 
                 method: "GET",
 
@@ -118,8 +118,8 @@ class Avoire extends Component {
             .then(data => {
 
                 let name_of_factur = data.avoire_id;
-                window.open("https://managementstock.herokuapp.com/sendavoire/" + name_of_factur, "_blank");
-                window.open("https://managementstock.herokuapp.com/removeavoire/" + name_of_factur, "_blank");
+                window.open("http://managementstock.herokuapp.com/sendavoire/" + name_of_factur, "_blank");
+                window.open("http://managementstock.herokuapp.com/removeavoire/" + name_of_factur, "_blank");
 
             })
 
@@ -152,7 +152,7 @@ class Avoire extends Component {
                         <p>{this.state.all_info.ice_company}</p>
                     </div>
                     <div className="photodate">
-                        <img src={'https://managementstock.herokuapp.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
+                        <img src={'http://managementstock.herokuapp.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
                         <p>{this.state.avoireinfo.Date_operation_list_avoire}</p>
                     </div>
                 </div>

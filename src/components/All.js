@@ -36,7 +36,7 @@ class All extends React.Component {
 
         e.preventDefault();
 
-        fetch("https://managementstock.herokuapp.com/login",{
+        fetch("http://managementstock.herokuapp.com/login",{
 
             method: "POST",
 

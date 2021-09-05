@@ -24,7 +24,7 @@ class Bl extends Component {
     }
     componentDidMount(){
 
-        fetch("http://managementstock.herokuapp.com/bl/" + window.location.pathname.substr(4),{
+        fetch("http://asyd12855.pythonanywhere.com/bl/" + window.location.pathname.substr(4),{
 
             method: "GET",
 
@@ -61,7 +61,7 @@ class Bl extends Component {
             );
 
         });
-        fetch("http://managementstock.herokuapp.com/settingsinfo",{
+        fetch("http://asyd12855.pythonanywhere.com/settingsinfo",{
 
             method: "GET",
 
@@ -101,7 +101,7 @@ class Bl extends Component {
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the B.L. ?")) {
-            fetch("http://managementstock.herokuapp.com/downloadbl/" + window.location.pathname.substr(4),{
+            fetch("http://asyd12855.pythonanywhere.com/downloadbl/" + window.location.pathname.substr(4),{
 
                 method: "GET",
 
@@ -118,8 +118,8 @@ class Bl extends Component {
             .then(data => {
 
                 let name_of_factur = data.bl_id;
-                window.open("http://managementstock.herokuapp.com/sendbl/" + name_of_factur, "_blank");
-                window.open("http://managementstock.herokuapp.com/removebl/" + name_of_factur, "_blank");
+                window.open("http://asyd12855.pythonanywhere.com/sendbl/" + name_of_factur, "_blank");
+                window.open("http://asyd12855.pythonanywhere.com/removebl/" + name_of_factur, "_blank");
 
             })
 
@@ -152,7 +152,7 @@ class Bl extends Component {
                         <p>{this.state.all_info.ice_company}</p>
                     </div>
                     <div className="photodate">
-                        <img src={'http://managementstock.herokuapp.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
+                        <img src={'http://asyd12855.pythonanywhere.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
                         <p>{this.state.blinfo.Date_operation_list_bl}</p>
                     </div>
                 </div>

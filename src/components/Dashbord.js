@@ -65,7 +65,8 @@ class Dashbord extends Component {
             listbl : [],
             listsansfactur : [],
             listavoire : [],
-            index_of_edit_vente : 0
+            index_of_edit_vente : 0,
+            chart : []
         }
 
       }
@@ -79,7 +80,7 @@ class Dashbord extends Component {
         this.selectfourn();
         this.selectfactur();
 
-        fetch("http://managementstock.herokuapp.com/notifi",{
+        fetch("http://asyd12855.pythonanywhere.com/notifi",{
 
             method: "GET",
 
@@ -119,7 +120,7 @@ class Dashbord extends Component {
 
         });
 
-        fetch("http://managementstock.herokuapp.com/admin",{
+        fetch("http://asyd12855.pythonanywhere.com/admin",{
 
             method: "GET",
 
@@ -309,7 +310,7 @@ class Dashbord extends Component {
 
         comptab_menu.style.display = 'none';
 
-        fetch("http://managementstock.herokuapp.com/moneycompany",{
+        fetch("http://asyd12855.pythonanywhere.com/moneycompany",{
 
             method: "GET",
 
@@ -344,6 +345,62 @@ class Dashbord extends Component {
                 error
 
             );
+
+        });
+
+        fetch("http://asyd12855.pythonanywhere.com/chart",{
+
+            method: "GET",
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            }
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            let dashbord = data.chart;
+            let data1 = [
+
+                ["January", dashbord[0].price],
+
+                ["February", dashbord[1].price],
+
+                ["March", dashbord[2].price],
+
+                ["April", dashbord[3].price],
+
+                ["May", dashbord[4].price],
+
+                ["June", dashbord[5].price],
+
+                ["July", dashbord[6].price],
+
+                ["August", dashbord[7].price],
+
+                ["September", dashbord[8].price],
+
+                ["October", dashbord[9].price],
+
+                ["November", dashbord[10].price],
+
+                ["December", dashbord[11].price]
+
+                ];
+            this.setState({
+                chart : data1
+            });
+
+        })
+
+        .catch(error => {
+
+            alert("You have a problem in the Chart");
 
         });
 
@@ -403,11 +460,11 @@ class Dashbord extends Component {
 
         let list_des_ventes = document.getElementById("list_des_ventes");
 
-        list_des_ventes.style.display = 'none';
+        list_des_ventes.style.display = 'block';
 
         let point_vente1 = document.getElementById("point_vente1");
 
-        point_vente1.style.display = 'block';
+        point_vente1.style.display = 'none';
 
         let avoire = document.getElementById("avoire");
 
@@ -1275,7 +1332,7 @@ class Dashbord extends Component {
 
     handleClick8 = () => {
 
-        fetch("http://managementstock.herokuapp.com/settingsinfo",{
+        fetch("http://asyd12855.pythonanywhere.com/settingsinfo",{
 
             method: "GET",
 
@@ -1299,7 +1356,7 @@ class Dashbord extends Component {
             document.getElementById("cnss_settings_tab_id").value = data.all_info.cnss_company;
             document.getElementById("ice_settings_tab_id").value = data.all_info.ice_company;
             document.getElementById("adrresse_field_settings_tab_id").value = data.all_info.addresse_company;
-            document.getElementById("output").setAttribute('src', 'http://managementstock.herokuapp.com/companylogo/'+data.all_info.image_name_company)
+            document.getElementById("output").setAttribute('src', 'http://asyd12855.pythonanywhere.com/companylogo/'+data.all_info.image_name_company)
 
         })
 
@@ -1473,9 +1530,9 @@ class Dashbord extends Component {
 
         point_vente_menu.style.display = 'none';
 
-        let dashbordfull = document.getElementById("dashbordfull");
+        let list_des_ventes = document.getElementById("list_des_ventes");
 
-        dashbordfull.style.display = 'none';
+        list_des_ventes.style.display = 'none';
 
         let point_vente1 = document.getElementById("point_vente1");
 
@@ -1489,15 +1546,15 @@ class Dashbord extends Component {
 
         point_vente_menu.style.display = 'none';
 
-        let point_vente1 = document.getElementById("point_vente1");
+        let dashbordfull = document.getElementById("dashbordfull");
 
-        point_vente1.style.display = 'none';
+        dashbordfull.style.display = 'none';
 
         let list_des_ventes = document.getElementById("list_des_ventes");
 
         list_des_ventes.style.display = 'block';
 
-        fetch("http://managementstock.herokuapp.com/listfactur",{
+        fetch("http://asyd12855.pythonanywhere.com/listfactur",{
 
             method: "GET",
 
@@ -1533,7 +1590,7 @@ class Dashbord extends Component {
 
         });
 
-        fetch("http://managementstock.herokuapp.com/listsansfactur",{
+        fetch("http://asyd12855.pythonanywhere.com/listsansfactur",{
 
             method: "GET",
 
@@ -1579,9 +1636,9 @@ class Dashbord extends Component {
 
         point_vente_menu.style.display = 'none';
 
-        let point_vente1 = document.getElementById("point_vente1");
+        let list_des_ventes = document.getElementById("list_des_ventes");
 
-        point_vente1.style.display = 'none';
+        list_des_ventes.style.display = 'none';
 
         let avoire = document.getElementById("avoire");
 
@@ -1595,15 +1652,15 @@ class Dashbord extends Component {
 
         point_vente_menu.style.display = 'none';
 
-        let point_vente1 = document.getElementById("point_vente1");
+        let list_des_ventes = document.getElementById("list_des_ventes");
 
-        point_vente1.style.display = 'none';
+        list_des_ventes.style.display = 'none';
 
         let list_des_avoire = document.getElementById("list_des_avoire");
 
         list_des_avoire.style.display = 'block';
 
-        fetch("http://managementstock.herokuapp.com/listavoire",{
+        fetch("http://asyd12855.pythonanywhere.com/listavoire",{
 
             method: "GET",
 
@@ -1647,15 +1704,15 @@ class Dashbord extends Component {
 
         point_vente_menu.style.display = 'none';
 
-        let point_vente1 = document.getElementById("point_vente1");
+        let list_des_ventes = document.getElementById("list_des_ventes");
 
-        point_vente1.style.display = 'none';
+        list_des_ventes.style.display = 'none';
 
         let charge = document.getElementById("charge");
 
         charge.style.display = 'block';
 
-        fetch("http://managementstock.herokuapp.com/listcharge",{
+        fetch("http://asyd12855.pythonanywhere.com/listcharge",{
 
             method: "GET",
 
@@ -1723,7 +1780,7 @@ class Dashbord extends Component {
 
         list_product.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listproduct",{
+        fetch("http://asyd12855.pythonanywhere.com/listproduct",{
 
             method: "GET",
 
@@ -1802,7 +1859,7 @@ class Dashbord extends Component {
 
         list_client1.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listclient",{
+        fetch("http://asyd12855.pythonanywhere.com/listclient",{
 
             method: "GET",
 
@@ -1854,7 +1911,7 @@ class Dashbord extends Component {
 
         list_credit.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listcredit",{
+        fetch("http://asyd12855.pythonanywhere.com/listcredit",{
 
             method: "GET",
 
@@ -1922,7 +1979,7 @@ class Dashbord extends Component {
 
         list_fourn.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listfourn",{
+        fetch("http://asyd12855.pythonanywhere.com/listfourn",{
 
             method: "GET",
 
@@ -1974,7 +2031,7 @@ class Dashbord extends Component {
 
         list_factures.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listfactur",{
+        fetch("http://asyd12855.pythonanywhere.com/listfactur",{
 
             method: "GET",
 
@@ -2026,7 +2083,7 @@ class Dashbord extends Component {
 
         list_devis.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listdevis",{
+        fetch("http://asyd12855.pythonanywhere.com/listdevis",{
 
             method: "GET",
 
@@ -2078,7 +2135,7 @@ class Dashbord extends Component {
 
         list_sans_factures.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listsansfactur",{
+        fetch("http://asyd12855.pythonanywhere.com/listsansfactur",{
 
             method: "GET",
 
@@ -2130,7 +2187,7 @@ class Dashbord extends Component {
 
         list_bl.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listbl",{
+        fetch("http://asyd12855.pythonanywhere.com/listbl",{
 
             method: "GET",
 
@@ -2182,7 +2239,7 @@ class Dashbord extends Component {
 
         list_banque.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listbank",{
+        fetch("http://asyd12855.pythonanywhere.com/listbank",{
 
             method: "GET",
 
@@ -2234,7 +2291,7 @@ class Dashbord extends Component {
 
         list_caisse.style.display = 'flex';
 
-        fetch("http://managementstock.herokuapp.com/listcaisson",{
+        fetch("http://asyd12855.pythonanywhere.com/listcaisson",{
 
             method: "GET",
 
@@ -2465,7 +2522,7 @@ class Dashbord extends Component {
         }
         let obje = this.state.listcredit[index];
 
-        fetch("http://managementstock.herokuapp.com/infolistcredit/" + obje.credit_id,{
+        fetch("http://asyd12855.pythonanywhere.com/infolistcredit/" + obje.credit_id,{
 
             method: "GET",
 
@@ -2570,7 +2627,7 @@ class Dashbord extends Component {
 
         let obje = this.state.listproduct[index];
 
-        fetch("http://managementstock.herokuapp.com/infolistproduct/" + obje.product_id,{
+        fetch("http://asyd12855.pythonanywhere.com/infolistproduct/" + obje.product_id,{
 
             method: "GET",
 
@@ -2926,7 +2983,7 @@ class Dashbord extends Component {
 
                 obje.remise_vente_add = remise_vente_add;
 
-                fetch("http://managementstock.herokuapp.com/ajouterproduct",{
+                fetch("http://asyd12855.pythonanywhere.com/ajouterproduct",{
 
                     method: "POST",
 
@@ -3048,7 +3105,7 @@ class Dashbord extends Component {
                 obje.the_code = thecode;
                 obje.qty_vente_add = qty_edit_vente;
 
-                fetch("http://managementstock.herokuapp.com/ajouterproduct",{
+                fetch("http://asyd12855.pythonanywhere.com/ajouterproduct",{
 
                     method: "POST",
 
@@ -3147,7 +3204,7 @@ class Dashbord extends Component {
     logout = (e) => {
 
         e.preventDefault();
-        fetch("http://managementstock.herokuapp.com/logout",{
+        fetch("http://asyd12855.pythonanywhere.com/logout",{
 
             method: "GET",
 
@@ -3181,7 +3238,7 @@ class Dashbord extends Component {
 
     }
     selectgenerale = () => {
-        fetch("http://managementstock.herokuapp.com/selectgenerale",{
+        fetch("http://asyd12855.pythonanywhere.com/selectgenerale",{
 
             method: "GET",
 
@@ -3218,7 +3275,7 @@ class Dashbord extends Component {
         });
     }
     selectcategory = () => {
-        fetch("http://managementstock.herokuapp.com/selectcategory",{
+        fetch("http://asyd12855.pythonanywhere.com/selectcategory",{
 
             method: "GET",
 
@@ -3270,7 +3327,7 @@ class Dashbord extends Component {
             filenamecom = file.files[0].name;
             let data = new FormData();
             data.append('file', file.files[0]);
-            fetch("http://managementstock.herokuapp.com/image",{
+            fetch("http://asyd12855.pythonanywhere.com/image",{
 
                 method: "POST",
 
@@ -3298,7 +3355,7 @@ class Dashbord extends Component {
 
             });
         }
-        fetch("http://managementstock.herokuapp.com/settings",{
+        fetch("http://asyd12855.pythonanywhere.com/settings",{
 
             method: "POST",
 
@@ -3351,7 +3408,7 @@ class Dashbord extends Component {
         let fax = document.getElementById("fax_add_fourn_id1").value;
         let adresse = document.getElementById("adrresse_field_add_fourn_id1").value;
         let activite = document.getElementById("activite_field_add_fourn_id1").value;
-        fetch("http://managementstock.herokuapp.com/addfourn",{
+        fetch("http://asyd12855.pythonanywhere.com/addfourn",{
 
             method: "POST",
 
@@ -3401,7 +3458,7 @@ class Dashbord extends Component {
     addgenerale = (e) => {
         e.preventDefault();
         let new_generale = document.getElementById("input_for_generale_new_id").value;
-        fetch("http://managementstock.herokuapp.com/addgenerale",{
+        fetch("http://asyd12855.pythonanywhere.com/addgenerale",{
 
             method: "POST",
 
@@ -3445,7 +3502,7 @@ class Dashbord extends Component {
     addcategory = (e) => {
         e.preventDefault();
         let new_category = document.getElementById("input_for_category_new_id").value;
-        fetch("http://managementstock.herokuapp.com/addcategory",{
+        fetch("http://asyd12855.pythonanywhere.com/addcategory",{
 
             method: "POST",
 
@@ -3487,7 +3544,7 @@ class Dashbord extends Component {
     }
     del_list_fourn = (ind) => {
         if (window.confirm('are you sure you want to delete the Fournisseur?')) {
-            fetch("http://managementstock.herokuapp.com/listfourn/" + ind,{
+            fetch("http://asyd12855.pythonanywhere.com/listfourn/" + ind,{
 
                 method: "DELETE",
 
@@ -3530,7 +3587,7 @@ class Dashbord extends Component {
         let edit_fourn6 = document.getElementById("adrresse_field_edit_fourn_id").value;
         let edit_fourn7 = document.getElementById("activite_field_edit_fourn_id").value;
         let index_of_edit_fourn = this.state.index_of_edit_fourn;
-        fetch("http://managementstock.herokuapp.com/editfourn",{
+        fetch("http://asyd12855.pythonanywhere.com/editfourn",{
 
             method: "POST",
 
@@ -3582,7 +3639,7 @@ class Dashbord extends Component {
         });
     }
     selectfourn = () => {
-        fetch("http://managementstock.herokuapp.com/selectfourn",{
+        fetch("http://asyd12855.pythonanywhere.com/selectfourn",{
 
             method: "GET",
 
@@ -3626,7 +3683,7 @@ class Dashbord extends Component {
         let cin_add_client_n_ice = document.getElementById("cin_add_client_n_ice_id1").value;
         let cin_add_client_cin = document.getElementById("cin_add_client_cin_id1").value;
         let address_add_client_adresse = document.getElementById("address_add_client_adresse_id1").value;
-        fetch("http://managementstock.herokuapp.com/addclient",{
+        fetch("http://asyd12855.pythonanywhere.com/addclient",{
 
             method: "POST",
 
@@ -3673,7 +3730,7 @@ class Dashbord extends Component {
     }
     del_list_client = (ind) => {
         if (window.confirm('are you sure you want to delete the Client?')) {
-            fetch("http://managementstock.herokuapp.com/listclient/" + ind,{
+            fetch("http://asyd12855.pythonanywhere.com/listclient/" + ind,{
 
                 method: "DELETE",
 
@@ -3715,7 +3772,7 @@ class Dashbord extends Component {
         let edit_client5 = document.getElementById("cin_add_client_cin_id").value;
         let edit_client6 = document.getElementById("address_add_client_adresse_id").value;
         let index_of_edit_client = this.state.index_of_edit_client;
-        fetch("http://managementstock.herokuapp.com/editclient",{
+        fetch("http://asyd12855.pythonanywhere.com/editclient",{
 
             method: "POST",
 
@@ -3769,7 +3826,7 @@ class Dashbord extends Component {
         e.preventDefault();
         let input_for_montant_id = document.getElementById("input_for_montant_id").value;
         let index_id = this.state.info_for_montant_generale_name.index_id;
-        fetch("http://managementstock.herokuapp.com/misejour",{
+        fetch("http://asyd12855.pythonanywhere.com/misejour",{
 
             method: "POST",
 
@@ -3831,7 +3888,7 @@ class Dashbord extends Component {
             filenamelogo = file.files[0].name;
             let data = new FormData();
             data.append('file', file.files[0]);
-            fetch("http://managementstock.herokuapp.com/logoproduct",{
+            fetch("http://asyd12855.pythonanywhere.com/logoproduct",{
 
                 method: "POST",
 
@@ -3871,7 +3928,7 @@ class Dashbord extends Component {
                     kg_or_m = 'm';
                 }
             }
-            fetch("http://managementstock.herokuapp.com/addproduct",{
+            fetch("http://asyd12855.pythonanywhere.com/addproduct",{
 
                 method: "POST",
 
@@ -3925,7 +3982,7 @@ class Dashbord extends Component {
     }
     del_list_product = (ind) => {
         if (window.confirm('are you sure you want to delete the Product?')) {
-            fetch("http://managementstock.herokuapp.com/dellistproduct/" + ind,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistproduct/" + ind,{
 
                 method: "DELETE",
 
@@ -3965,7 +4022,7 @@ class Dashbord extends Component {
         let pu_devis_add_product = document.getElementById("pu_devis_add_product_id").value;
         let prix_d_achat_add_product = document.getElementById("prix_d_achat_add_product_id").value;
         let prix_de_vente_add_product = document.getElementById("prix_de_vente_add_product_id").value;
-        fetch("http://managementstock.herokuapp.com/addproductstorage",{
+        fetch("http://asyd12855.pythonanywhere.com/addproductstorage",{
 
             method: "POST",
 
@@ -4015,7 +4072,7 @@ class Dashbord extends Component {
     }
     del_list_charge = (id) => {
         if (window.confirm('are you sure you want to delete the Charge?')) {
-            fetch("http://managementstock.herokuapp.com/dellistcharge/" + id,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistcharge/" + id,{
 
                 method: "DELETE",
 
@@ -4052,7 +4109,7 @@ class Dashbord extends Component {
         e.preventDefault();
         let listdes_avoire_description = document.getElementById("listdes_avoire_description_id").value;
         let listdes_avoire_prix = document.getElementById("listdes_avoire_prix_id").value;
-        fetch("http://managementstock.herokuapp.com/addcharge",{
+        fetch("http://asyd12855.pythonanywhere.com/addcharge",{
 
             method: "POST",
 
@@ -4092,7 +4149,7 @@ class Dashbord extends Component {
     }
     del_list_factur = (id) => {
         if (window.confirm('are you sure you want to delete the Facture?')) {
-            fetch("http://managementstock.herokuapp.com/dellistfactur/" + id,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistfactur/" + id,{
 
                 method: "DELETE",
 
@@ -4127,7 +4184,7 @@ class Dashbord extends Component {
     }
     del_list_devis = (id) => {
         if (window.confirm('are you sure you want to delete the Devis?')) {
-            fetch("http://managementstock.herokuapp.com/dellistdevis/" + id,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistdevis/" + id,{
 
                 method: "DELETE",
 
@@ -4162,7 +4219,7 @@ class Dashbord extends Component {
     }
     del_list_sans_factur = (id) => {
         if (window.confirm('are you sure you want to delete the Sans Facture?')) {
-            fetch("http://managementstock.herokuapp.com/dellistsansfactur/" + id,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistsansfactur/" + id,{
 
                 method: "DELETE",
 
@@ -4197,7 +4254,7 @@ class Dashbord extends Component {
     }
     del_list_bl = (id) => {
         if (window.confirm('are you sure you want to delete the B.L.?')) {
-            fetch("http://managementstock.herokuapp.com/dellistbl/" + id,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistbl/" + id,{
 
                 method: "DELETE",
 
@@ -4232,7 +4289,7 @@ class Dashbord extends Component {
     }
     devis_be_factur = (id) => {
         if (window.confirm('are you sure you want to make that Devis a Facture?')) {
-            fetch("http://managementstock.herokuapp.com/devisbefactur",{
+            fetch("http://asyd12855.pythonanywhere.com/devisbefactur",{
 
                 method: "POST",
 
@@ -4279,7 +4336,7 @@ class Dashbord extends Component {
     }
     sans_be_factur = (id) => {
         if (window.confirm('are you sure you want to make that Sans Facture a Facture?')) {
-            fetch("http://managementstock.herokuapp.com/sansbefactur",{
+            fetch("http://asyd12855.pythonanywhere.com/sansbefactur",{
 
                 method: "POST",
 
@@ -4342,7 +4399,7 @@ class Dashbord extends Component {
         if (array_of_bl.length > 0) {
             if (window.confirm('are you sure you want to make that B.L. a Facture?')) {
                 console.log(array_of_bl);
-                fetch("http://managementstock.herokuapp.com/blbefactur",{
+                fetch("http://asyd12855.pythonanywhere.com/blbefactur",{
     
                     method: "POST",
     
@@ -4389,7 +4446,7 @@ class Dashbord extends Component {
         }
     }
     selectfactur = () => {
-        fetch("http://managementstock.herokuapp.com/listfactur",{
+        fetch("http://asyd12855.pythonanywhere.com/listfactur",{
 
             method: "GET",
 
@@ -4426,7 +4483,7 @@ class Dashbord extends Component {
         });
     }
     selectclient = () => {
-        fetch("http://managementstock.herokuapp.com/listclient",{
+        fetch("http://asyd12855.pythonanywhere.com/listclient",{
 
             method: "GET",
 
@@ -4464,7 +4521,7 @@ class Dashbord extends Component {
     }
     del_list_avoire = (id) => {
         if (window.confirm('are you sure you want to delete the Avoire?')) {
-            fetch("http://managementstock.herokuapp.com/dellistavoire/" + id,{
+            fetch("http://asyd12855.pythonanywhere.com/dellistavoire/" + id,{
 
                 method: "DELETE",
 
@@ -4505,7 +4562,7 @@ class Dashbord extends Component {
         let cin_add_client_n_ice = document.getElementById("cin_add_client_n_ice_id2").value;
         let cin_add_client_cin = document.getElementById("cin_add_client_cin_id2").value;
         let address_add_client_adresse = document.getElementById("address_add_client_adresse_id2").value;
-        fetch("http://managementstock.herokuapp.com/addclient",{
+        fetch("http://asyd12855.pythonanywhere.com/addclient",{
 
             method: "POST",
 
@@ -4555,7 +4612,7 @@ class Dashbord extends Component {
     submit_search_caisson = (e) => {
         e.preventDefault();
         let client_srch_list_caisse = document.getElementById("client_srch_list_caisse_id").value;
-        fetch("http://managementstock.herokuapp.com/caisson/search",{
+        fetch("http://asyd12855.pythonanywhere.com/caisson/search",{
 
             method: "POST",
 
@@ -4598,7 +4655,7 @@ class Dashbord extends Component {
     submit_search_bank = (e) => {
         e.preventDefault();
         let client_srch_list_banque = document.getElementById("client_srch_list_banque_id").value;
-        fetch("http://managementstock.herokuapp.com/bank/search",{
+        fetch("http://asyd12855.pythonanywhere.com/bank/search",{
 
             method: "POST",
 
@@ -4641,7 +4698,7 @@ class Dashbord extends Component {
     submit_search_bl_client = (e) => {
         e.preventDefault();
         let client_srch_list_bl = document.getElementById("client_srch_list_bl_id").value;
-        fetch("http://managementstock.herokuapp.com/bl/search/client",{
+        fetch("http://asyd12855.pythonanywhere.com/bl/search/client",{
 
             method: "POST",
 
@@ -4684,7 +4741,7 @@ class Dashbord extends Component {
     submit_search_bl_date = (e) => {
         e.preventDefault();
         let Date_srch_list_bl = document.getElementById("Date_srch_list_bl_id").value;
-        fetch("http://managementstock.herokuapp.com/bl/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/bl/search/date",{
 
             method: "POST",
 
@@ -4727,7 +4784,7 @@ class Dashbord extends Component {
     submit_search_sans_client = (e) => {
         e.preventDefault();
         let client_srch_list_sans_factures = document.getElementById("client_srch_list_sans_factures_id").value;
-        fetch("http://managementstock.herokuapp.com/sans/search/client",{
+        fetch("http://asyd12855.pythonanywhere.com/sans/search/client",{
 
             method: "POST",
 
@@ -4770,7 +4827,7 @@ class Dashbord extends Component {
     submit_search_sans_date = (e) => {
         e.preventDefault();
         let Date_srch_list_sans_factures = document.getElementById("Date_srch_list_sans_factures_id").value;
-        fetch("http://managementstock.herokuapp.com/sans/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/sans/search/date",{
 
             method: "POST",
 
@@ -4813,7 +4870,7 @@ class Dashbord extends Component {
     submit_search_devis_client = (e) => {
         e.preventDefault();
         let client_srch_list_devis = document.getElementById("client_srch_list_devis_id").value;
-        fetch("http://managementstock.herokuapp.com/devis/search/client",{
+        fetch("http://asyd12855.pythonanywhere.com/devis/search/client",{
 
             method: "POST",
 
@@ -4856,7 +4913,7 @@ class Dashbord extends Component {
     submit_search_devis_date = (e) => {
         e.preventDefault();
         let Date_srch_list_devis = document.getElementById("Date_srch_list_devis_id").value;
-        fetch("http://managementstock.herokuapp.com/devis/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/devis/search/date",{
 
             method: "POST",
 
@@ -4899,7 +4956,7 @@ class Dashbord extends Component {
     submit_search_factur_client = (e) => {
         e.preventDefault();
         let client_srch_list_factures = document.getElementById("client_srch_list_factures_id").value;
-        fetch("http://managementstock.herokuapp.com/factur/search/client",{
+        fetch("http://asyd12855.pythonanywhere.com/factur/search/client",{
 
             method: "POST",
 
@@ -4942,7 +4999,7 @@ class Dashbord extends Component {
     submit_search_factur_date = (e) => {
         e.preventDefault();
         let Date_srch_list_factures = document.getElementById("Date_srch_list_factures_id").value;
-        fetch("http://managementstock.herokuapp.com/factur/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/factur/search/date",{
 
             method: "POST",
 
@@ -4985,7 +5042,7 @@ class Dashbord extends Component {
     submit_search_fourn_act = (e) => {
         e.preventDefault();
         let activite_input_search_list_fourn = document.getElementById("activite_input_search_list_fourn_id").value;
-        fetch("http://managementstock.herokuapp.com/fourn/activite/search",{
+        fetch("http://asyd12855.pythonanywhere.com/fourn/activite/search",{
 
             method: "POST",
 
@@ -5028,7 +5085,7 @@ class Dashbord extends Component {
     submit_search_fourn_name = (e) => {
         e.preventDefault();
         let nom_input_search_list_fourn = document.getElementById("nom_input_search_list_fourn_id").value;
-        fetch("http://managementstock.herokuapp.com/fourn/name/search",{
+        fetch("http://asyd12855.pythonanywhere.com/fourn/name/search",{
 
             method: "POST",
 
@@ -5071,7 +5128,7 @@ class Dashbord extends Component {
     submit_search_credit_client = (e) => {
         e.preventDefault();
         let nom_input_search_list_credit = document.getElementById("nom_input_search_list_credit_id").value;
-        fetch("http://managementstock.herokuapp.com/credit/name/search",{
+        fetch("http://asyd12855.pythonanywhere.com/credit/name/search",{
 
             method: "POST",
 
@@ -5114,7 +5171,7 @@ class Dashbord extends Component {
     submit_search_client_ice = (e) => {
         e.preventDefault();
         let ice_input_search_list_client = document.getElementById("ice_input_search_list_client_id").value;
-        fetch("http://managementstock.herokuapp.com/client/ice/search",{
+        fetch("http://asyd12855.pythonanywhere.com/client/ice/search",{
 
             method: "POST",
 
@@ -5157,7 +5214,7 @@ class Dashbord extends Component {
     submit_search_client_name = (e) => {
         e.preventDefault();
         let name_input_search_list_client = document.getElementById("name_input_search_list_client_id").value;
-        fetch("http://managementstock.herokuapp.com/client/name/search",{
+        fetch("http://asyd12855.pythonanywhere.com/client/name/search",{
 
             method: "POST",
 
@@ -5200,7 +5257,7 @@ class Dashbord extends Component {
     submit_search_product_category = (e) => {
         e.preventDefault();
         let categorie_input_search_list_product = document.getElementById("categorie_input_search_list_product_id").value;
-        fetch("http://managementstock.herokuapp.com/product/category/search",{
+        fetch("http://asyd12855.pythonanywhere.com/product/category/search",{
 
             method: "POST",
 
@@ -5243,7 +5300,7 @@ class Dashbord extends Component {
     submit_search_product_barcode = (e) => {
         e.preventDefault();
         let recherche_input_search_list_product = document.getElementById("recherche_input_search_list_product_id").value;
-        fetch("http://managementstock.herokuapp.com/product/barcode/search",{
+        fetch("http://asyd12855.pythonanywhere.com/product/barcode/search",{
 
             method: "POST",
 
@@ -5286,7 +5343,7 @@ class Dashbord extends Component {
     submit_search_charge_date = (e) => {
         e.preventDefault();
         let from_date_srch_lst_ventes = document.getElementById("from_date_srch_lst_ventes_id3").value;
-        fetch("http://managementstock.herokuapp.com/charge/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/charge/search/date",{
 
             method: "POST",
 
@@ -5329,7 +5386,7 @@ class Dashbord extends Component {
     submit_search_avoire_date = (e) => {
         e.preventDefault();
         let from_date_srch_lst_ventes = document.getElementById("from_date_srch_lst_ventes_id2").value;
-        fetch("http://managementstock.herokuapp.com/avoire/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/avoire/search/date",{
 
             method: "POST",
 
@@ -5372,7 +5429,7 @@ class Dashbord extends Component {
     submit_search_vente_date = (e) => {
         e.preventDefault();
         let from_date_srch_lst_ventes = document.getElementById("from_date_srch_lst_ventes_id1").value;
-        fetch("http://managementstock.herokuapp.com/factur/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/factur/search/date",{
 
             method: "POST",
 
@@ -5411,7 +5468,7 @@ class Dashbord extends Component {
             );
 
         });
-        fetch("http://managementstock.herokuapp.com/sans/search/date",{
+        fetch("http://asyd12855.pythonanywhere.com/sans/search/date",{
 
             method: "POST",
 
@@ -5454,7 +5511,7 @@ class Dashbord extends Component {
     submit_search_vente_client = (e) => {
         e.preventDefault();
         let name_srch_lst_ventes = document.getElementById("name_srch_lst_ventes_id").value;
-        fetch("http://managementstock.herokuapp.com/factur/search/client",{
+        fetch("http://asyd12855.pythonanywhere.com/factur/search/client",{
 
             method: "POST",
 
@@ -5493,7 +5550,7 @@ class Dashbord extends Component {
             );
 
         });
-        fetch("http://managementstock.herokuapp.com/sans/search/client",{
+        fetch("http://asyd12855.pythonanywhere.com/sans/search/client",{
 
             method: "POST",
 
@@ -5643,7 +5700,7 @@ class Dashbord extends Component {
             } else {
                 console.log(this.state.vente_add);
                 console.log(this.state.regelmentvente);
-                fetch("http://managementstock.herokuapp.com/addfactur",{
+                fetch("http://asyd12855.pythonanywhere.com/addfactur",{
 
                     method: "POST",
 
@@ -5676,7 +5733,7 @@ class Dashbord extends Component {
                             alert("Choose the client ,Regelement and add products and press again");
                         } else {
                             alert("You have added a Facture");
-                            window.open("http://managementstock1.herokuapp.com/factur/" + data.factur_id, "_blank");
+                            window.open("https://managementstock1.herokuapp.com/factur/" + data.factur_id, "_blank");
                             window.location.reload();
                         }
                     }
@@ -5701,7 +5758,7 @@ class Dashbord extends Component {
             if (Object.keys(this.state.regelmentvente).length === 0) {
                 alert("You Must choose how to pay");
             } else {
-                fetch("http://managementstock.herokuapp.com/addsansfactur",{
+                fetch("http://asyd12855.pythonanywhere.com/addsansfactur",{
 
                     method: "POST",
 
@@ -5754,7 +5811,7 @@ class Dashbord extends Component {
             if (Object.keys(this.state.regelmentvente).length === 0) {
                 alert("You Must choose how to pay");
             } else {
-                fetch("http://managementstock.herokuapp.com/adddevis",{
+                fetch("http://asyd12855.pythonanywhere.com/adddevis",{
 
                     method: "POST",
 
@@ -5784,7 +5841,7 @@ class Dashbord extends Component {
                         alert("Choose the client ,Regelement and add products and press again");
                     } else {
                         alert("You have added a Devis");
-                        window.open("http://managementstock1.herokuapp.com/devis/" + data.devis_id, "_blank");
+                        window.open("https://managementstock1.herokuapp.com/devis/" + data.devis_id, "_blank");
                         window.location.reload();
                     }
 
@@ -5808,7 +5865,7 @@ class Dashbord extends Component {
             if (Object.keys(this.state.regelmentvente).length === 0) {
                 alert("You Must choose how to pay");
             } else {
-                fetch("http://managementstock.herokuapp.com/addbl",{
+                fetch("http://asyd12855.pythonanywhere.com/addbl",{
 
                     method: "POST",
 
@@ -5838,7 +5895,7 @@ class Dashbord extends Component {
                         alert("Choose the client ,Regelement and add products and press again");
                     } else {
                         alert("You have added a B.L");
-                        window.open("http://managementstock1.herokuapp.com/bl/" + data.bl_id, "_blank");
+                        window.open("https://managementstock1.herokuapp.com/bl/" + data.bl_id, "_blank");
                         window.location.reload();
                     }
 
@@ -5854,7 +5911,7 @@ class Dashbord extends Component {
     }
     selectclient_avoire = () => {
         let chooseclient = document.getElementById("chooseclientid2").value;
-        fetch("http://managementstock.herokuapp.com/selectclientavoire",{
+        fetch("http://asyd12855.pythonanywhere.com/selectclientavoire",{
 
             method: "POST",
 
@@ -5886,7 +5943,7 @@ class Dashbord extends Component {
     }
     selectfactur_avoire = () => {
         let choosefactur = document.getElementById("choosefacturid").value;
-        fetch("http://managementstock.herokuapp.com/selectfacturavoire",{
+        fetch("http://asyd12855.pythonanywhere.com/selectfacturavoire",{
 
             method: "POST",
 
@@ -6016,7 +6073,7 @@ class Dashbord extends Component {
             } else {
                 console.log(this.state.avoire_list);
                 console.log(this.state.avoire_regelement);
-                fetch("http://managementstock.herokuapp.com/addavoire",{
+                fetch("http://asyd12855.pythonanywhere.com/addavoire",{
 
                     method: "POST",
 
@@ -6044,7 +6101,7 @@ class Dashbord extends Component {
 
                 .then(data => {
                     alert("You have added a Avoire");
-                    window.open("http://managementstock1.herokuapp.com/avoire/" + data.avoire_id, "_blank");
+                    window.open("https://managementstock1.herokuapp.com/avoire/" + data.avoire_id, "_blank");
                     window.location.reload();
 
                 })
@@ -6055,6 +6112,66 @@ class Dashbord extends Component {
 
                 });
             }
+        }
+    }
+    update_dashbord = () => {
+        alert("You are about to Update the Dashbord");
+        if (window.confirm("Are You sure that you want to Update Dashbord?")) {
+            fetch("http://asyd12855.pythonanywhere.com/updatedashbord",{
+
+                method: "GET",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                }
+
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                let dashbord = data.dashbord;
+                let data1 = [
+
+                    ["January", dashbord[0].price],
+
+                    ["February", dashbord[1].price],
+
+                    ["March", dashbord[2].price],
+
+                    ["April", dashbord[3].price],
+
+                    ["May", dashbord[4].price],
+
+                    ["June", dashbord[5].price],
+
+                    ["July", dashbord[6].price],
+
+                    ["August", dashbord[7].price],
+
+                    ["September", dashbord[8].price],
+
+                    ["October", dashbord[9].price],
+
+                    ["November", dashbord[10].price],
+
+                    ["December", dashbord[11].price]
+
+                    ];
+                this.setState({
+                    chart : data1
+                });
+
+            })
+
+            .catch(error => {
+
+                alert("You have a problem in the Chart");
+
+            });
         }
     }
     render(){
@@ -6360,33 +6477,7 @@ class Dashbord extends Component {
 
                                 type="line"
 
-                                data={[
-
-                                    ["January", 10000],
-
-                                    ["February", 12000],
-
-                                    ["March", 18000],
-
-                                    ["April"],
-
-                                    ["May"],
-
-                                    ["June"],
-
-                                    ["July"],
-
-                                    ["August"],
-
-                                    ["September"],
-
-                                    ["October"],
-
-                                    ["November"],
-
-                                    ["December"]
-
-                                    ]}
+                                data={this.state.chart}
 
                             />
 
@@ -8423,7 +8514,9 @@ class Dashbord extends Component {
 
                             <div className='submit_settings_tab'>
 
-                                <input type="submit" name="submit_settings_tab_submit_name" value="Sauvegardek" id='submit_settings_tab_submit_id' />
+                                <input type="submit" name="submit_settings_tab_submit_name" value="Sauvegarde" id='submit_settings_tab_submit_id' />
+
+                                <div onClick={this.update_dashbord}>Update Dashboard</div>
 
                             </div>
 
@@ -9106,7 +9199,7 @@ class Dashbord extends Component {
 
                             <div className='logo_for_product_list_product'>
 
-                                <img src={'http://managementstock.herokuapp.com/productlogo/' + this.state.info_for_product.logo_product} alt='productLogo' />
+                                <img src={'http://asyd12855.pythonanywhere.com/productlogo/' + this.state.info_for_product.logo_product} alt='productLogo' />
 
                             </div>
 

@@ -2904,8 +2904,9 @@ input#cnss_settings_tab_id {
     height: 15%;
     width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .submit_settings_tab input {
     background-color: #0066ff;
@@ -2920,6 +2921,24 @@ input#cnss_settings_tab_id {
     cursor: pointer;
 }
 .submit_settings_tab input:hover {
+    opacity: 0.8;
+}
+.submit_settings_tab div {
+    background-color: #0066ff;
+    height: 45px;
+    width: 150px;
+    border: 1px solid #0066ff;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: arial;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit_settings_tab div:hover {
     opacity: 0.8;
 }
 div#notif_heading {

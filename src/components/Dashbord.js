@@ -6805,7 +6805,7 @@ class Dashbord extends Component {
     
                                                     <td>{val.montant_list_factur}</td>
     
-                                                    <td><a href={'/factur/'+ val.id} target='_blank' rel='noreferrer' className='fas fa-eye'></a></td>
+                                                    <td><a href={'/factur/'+ val.id} target='_blank' rel="noopener noreferrer" className='fas fa-eye'> </a></td>
     
                                                 </tr>
     
@@ -7080,7 +7080,7 @@ class Dashbord extends Component {
     
                                                     <td>{val.montant_list_avoire}</td>
     
-                                                    <td><span onClick={() => this.del_list_avoire(val.id)} className='fas fa-trash'></span><a href={'/avoire/'+ val.id} target='_blank' rel='noreferrer' className='fas fa-eye'></a></td>
+                                                    <td><span onClick={() => this.del_list_avoire(val.id)} className='fas fa-trash'></span><a href={'/avoire/'+ val.id} target='_blank' rel="noopener noreferrer" className='fas fa-eye'> </a></td>
     
                                                 </tr>
     
@@ -7989,7 +7989,7 @@ class Dashbord extends Component {
     
                                                     <td>{val.montant_list_factur}</td>
     
-                                                    <td><span onClick={() => this.del_list_factur(val.id)} className='fas fa-trash'></span><a href={'/factur/'+ val.id} target='_blank' rel='noreferrer' className='fas fa-eye'></a></td>
+                                                    <td><span onClick={() => this.del_list_factur(val.id)} className='fas fa-trash'></span><a href={'/factur/'+ val.id} target='_blank' rel="noopener noreferrer" className='fas fa-eye'> </a></td>
     
                                                 </tr>
     
@@ -8081,7 +8081,7 @@ class Dashbord extends Component {
     
                                                     <td>{val.montant_list_devis}</td>
     
-                                                    <td><span onClick={() => this.del_list_devis(val.id)} className='fas fa-trash'></span><a href={'/devis/'+ val.id} target='_blank' rel="noreferrer" className='fas fa-eye'></a><span onClick={() => this.devis_be_factur(val.id)} className='fas fa-check'></span></td>
+                                                    <td><span onClick={() => this.del_list_devis(val.id)} className='fas fa-trash'></span><a href={'/devis/'+ val.id} target='_blank' rel="noopener noreferrer" className='fas fa-eye'> </a><span onClick={() => this.devis_be_factur(val.id)} className='fas fa-check'></span></td>
     
                                                 </tr>
     
@@ -8266,7 +8266,7 @@ class Dashbord extends Component {
     
                                                     <td>{val.montant_list_bl}</td>
     
-                                                    <td><input type="checkbox" id={val.id} value={val.id} className={'checkboxclass' + val.client_id_list_bl} /><span onClick={() => this.del_list_bl(val.id)} className='fas fa-trash'></span><a href={'/bl/'+ val.id} target='_blank' rel='noreferrer' className='fas fa-eye'></a></td>
+                                                    <td><input type="checkbox" id={val.id} value={val.id} className={'checkboxclass' + val.client_id_list_bl} /><span onClick={() => this.del_list_bl(val.id)} className='fas fa-trash'></span><a href={'/bl/'+ val.id} target='_blank' rel="noopener noreferrer" className='fas fa-eye'> </a></td>
     
                                                 </tr>
     

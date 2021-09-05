@@ -36,7 +36,7 @@ class All extends React.Component {
 
         e.preventDefault();
 
-        fetch("http://asyd12855.pythonanywhere.com/login",{
+        fetch("https://asyd12855.pythonanywhere.com/login",{
 
             method: "POST",
 

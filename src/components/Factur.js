@@ -24,7 +24,7 @@ class Factur extends Component {
     }
     componentDidMount(){
 
-        fetch("http://asyd12855.pythonanywhere.com/factur/" + window.location.pathname.substr(8),{
+        fetch("https://asyd12855.pythonanywhere.com/factur/" + window.location.pathname.substr(8),{
 
             method: "GET",
 
@@ -61,7 +61,7 @@ class Factur extends Component {
             );
 
         });
-        fetch("http://asyd12855.pythonanywhere.com/settingsinfo",{
+        fetch("https://asyd12855.pythonanywhere.com/settingsinfo",{
 
             method: "GET",
 
@@ -101,7 +101,7 @@ class Factur extends Component {
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the Facture?")) {
-            fetch("http://asyd12855.pythonanywhere.com/downloadfactur/" + window.location.pathname.substr(8),{
+            fetch("https://asyd12855.pythonanywhere.com/downloadfactur/" + window.location.pathname.substr(8),{
 
                 method: "GET",
 
@@ -118,8 +118,8 @@ class Factur extends Component {
             .then(data => {
 
                 let name_of_factur = data.factur_id;
-                window.open("http://asyd12855.pythonanywhere.com/sendfactur/" + name_of_factur, "_blank");
-                window.open("http://asyd12855.pythonanywhere.com/removefactur/" + name_of_factur, "_blank");
+                window.open("https://asyd12855.pythonanywhere.com/sendfactur/" + name_of_factur, "_blank");
+                window.open("https://asyd12855.pythonanywhere.com/removefactur/" + name_of_factur, "_blank");
 
             })
 
@@ -152,7 +152,7 @@ class Factur extends Component {
                         <p>{this.state.all_info.ice_company}</p>
                     </div>
                     <div className="photodate">
-                        <img src={'http://asyd12855.pythonanywhere.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
+                        <img src={'https://asyd12855.pythonanywhere.com/companylogo/' + this.state.all_info.image_name_company} alt='' id="output" />
                         <p>{this.state.facturinfo.Date_operation_list_factur}</p>
                     </div>
                 </div>

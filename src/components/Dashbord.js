@@ -6165,6 +6165,8 @@ class Dashbord extends Component {
                     chart : data1
                 });
 
+                alert("You have Updated your dashboard");
+
             })
 
             .catch(error => {

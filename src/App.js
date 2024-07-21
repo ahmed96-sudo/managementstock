@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Dashbord from './components/Dashbord';
+import Avoire from './components/Avoire';
+import Bl from './components/Bl';
+import Devis from './components/Devis';
+import Factur from './components/Factur';
+import Login from './components/Login';
 
-function App() {
+
+// https://managementstock.herokuapp.com/
+// http://127.0.0.1:5000/
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashbord />} />
+        <Route path="/avoire" element={<Avoire />} />
+        <Route path="/bl" element={<Bl />} />
+        <Route path="/devis" element={<Devis />} />
+        <Route path="/facture" element={<Factur />} />
+      </Routes>
+    </>
   );
 }
 
